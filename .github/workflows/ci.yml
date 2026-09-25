@@ -1,0 +1,37 @@
+name: Test and inspect package
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        node: ['22.15.0', '24']
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.19.0
+      - name: Install from the committed lockfile
+        run: pnpm install --frozen-lockfile --ignore-scripts
+      - name: Import without a harness installation
+        run: node --input-type=module -e "await import('./lib/index.js')"
+      - name: Run isolated offline tests
+        run: pnpm test
+      - name: Inspect publishable files
+        shell: bash
+        run: |
+          pnpm pack --dry-run --json > "$RUNNER_TEMP/dsh-budget-package.json"
+          node scripts/verify-package.mjs "$RUNNER_TEMP/dsh-budget-package.json"

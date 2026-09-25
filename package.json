@@ -1,0 +1,40 @@
+{
+  "name": "dsh-cost-budget",
+  "version": "0.1.0",
+  "description": "DSH 成本预算插件：按北京时间阶梯累计当日消费金额，触顶硬停工具调用并暂停 goal，到边界自动续跑。计费来源为可插拔适配器。",
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "budget",
+    "cost",
+    "spend-cap"
+  ],
+  "type": "module",
+  "main": "lib/index.js",
+  "engines": {
+    "node": ">=22.15.0 <23 || >=24.0.0 <25"
+  },
+  "packageManager": "pnpm@11.19.0",
+  "scripts": {
+    "test": "node test/run.mjs"
+  },
+  "files": [
+    "lib",
+    "cordis.patch.yml",
+    "README.md"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "dependencies": {
+    "@deepseek-ai/dsh-atomic-write": "0.1.5-rc.2",
+    "@deepseek-ai/dsh-home-paths": "0.1.5-rc.2"
+  },
+  "devDependencies": {
+    "js-yaml": "4.3.2"
+  },
+  "license": "MIT"
+}

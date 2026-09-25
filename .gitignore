@@ -1,0 +1,43 @@
+# Installed dependencies and package-manager caches
+node_modules/
+.pnpm-store/
+
+# Local credentials and machine-specific configuration
+.env
+.env.*
+.npmrc
+.credentials*
+credentials*.json
+credentials*.yaml
+credentials*.yml
+*.pem
+*.key
+*.p12
+*.pfx
+.dsh/
+*.local
+*.local.*
+!.env.example
+!.env.*.example
+
+# Runtime ledgers, local budget overrides, calendar cache and their locks/backups
+dsh-cost-budget*.json*
+*.log
+*.log.*
+
+# Private billing exports and generated diagnostic output
+*.csv
+*.tsv
+test-output*.txt
+test-results/
+coverage/
+*.tmp
+*.tmp.*
+*.bak
+*.backup
+*.zip
+*.tgz
+
+# Desktop metadata
+.DS_Store
+Thumbs.db
