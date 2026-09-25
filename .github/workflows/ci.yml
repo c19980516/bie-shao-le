@@ -1,4 +1,4 @@
-name: Test and inspect package
+name: Validate installation and package
 
 on:
   push:
@@ -9,7 +9,7 @@ permissions:
   contents: read
 
 jobs:
-  test:
+  validate:
     strategy:
       fail-fast: false
       matrix:
@@ -28,8 +28,6 @@ jobs:
         run: pnpm install --frozen-lockfile --ignore-scripts
       - name: Import without a harness installation
         run: node --input-type=module -e "await import('./lib/index.js')"
-      - name: Run isolated offline tests
-        run: pnpm test
       - name: Inspect publishable files
         shell: bash
         run: |

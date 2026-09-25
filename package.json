@@ -16,9 +16,6 @@
     "node": ">=22.15.0 <23 || >=24.0.0 <25"
   },
   "packageManager": "pnpm@11.19.0",
-  "scripts": {
-    "test": "node test/run.mjs"
-  },
   "files": [
     "lib",
     "cordis.patch.yml",

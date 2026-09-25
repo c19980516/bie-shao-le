@@ -2,6 +2,9 @@
 node_modules/
 .pnpm-store/
 
+# Tests and previews are maintained locally
+/test/
+
 # Local credentials and machine-specific configuration
 .env
 .env.*

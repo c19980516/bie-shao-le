@@ -68,15 +68,6 @@ balance:
 - 暂无桌面通知。状态和配置接口依赖 DSH 宿主的访问控制，不要直接暴露到公网。
 - 真实凭证、账本、日志和接口响应不要提交到仓库或公开 issue。
 
-## 开发
-
-```powershell
-pnpm test              # 隔离环境下的离线回归测试
-node test/preview.mjs   # 使用合成数据预览界面，输入 quit 退出
-```
-
-GitHub Actions 检查 Windows / Ubuntu、Node.js 22.15 / 24 的安装、测试和打包内容。
-
 ## 许可证
 
 [MIT](./LICENSE)
